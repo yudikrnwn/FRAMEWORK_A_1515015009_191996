@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/public', function () {
+    return " nama : yudi kurniawan";
+});
+Route::get('pengguna/{pengguna}', function ($pengguna) {
+    return "hallo mas $pengguna";
+});
