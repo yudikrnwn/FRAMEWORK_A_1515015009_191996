@@ -10,7 +10,7 @@ class mahasiswacontroller extends Controller
 {
   public function awal()
  {
- 	return "hello";
+ 	return "selamat datang";
  }  
  public function tambah()
  {
