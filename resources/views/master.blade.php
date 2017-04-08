@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>@yield('page_title', 'Halaman Awal') | Laboratorium FW</title>
+	<title>@yield('page_title', 'Yudi kurniawan') | FrameWork</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('component/bootstrap/dist/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('component/font-awesome/css/font-awesome.min.css')}}">
 	<style type="text/css">
@@ -36,7 +36,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="{{url('/')}}" class="navbar-brand">Laravel-5</a>
+				<a href="{{url('/')}}" class="navbar-brand">Framework</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
@@ -98,7 +98,7 @@
 	</div>
 	<nav class="navbar navbar-default navbar-fixed-bottom">
 		<footer class="container">
-			
+		created by <a href="http://instagram.com/iniyudi"><span><i class="fa fa-instagram" style="color:#1da1f2"></i>@iniyudi</span></a>	
 		</footer>
 	</nav>
 	<script type="text/javascript" src="{{asset('component/jquery/dist/jquery.min.js')}}"></script>
