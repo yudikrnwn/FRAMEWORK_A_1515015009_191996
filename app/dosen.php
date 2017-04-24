@@ -14,7 +14,7 @@ class dosen extends Model
   //belongsTo di gunakan karen tabel dosen menerima foreign key dari tabel pengguna
 
   public function dosen_matakuliah(){
-  	return $this->hasMany(dosen_matakuliah::class,'dosen_matakuliah_id');
+  	return $this->hasMany(dosen_matakuliah::class,'dosen_id');
   }
   //untuk merelasikan model dosen dan dosen_matakuliah yang di gunakan adalah hasMany karna relasinya one to many
   public function getUsernameAttribute(){

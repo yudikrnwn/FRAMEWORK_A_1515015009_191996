@@ -1,30 +1,17 @@
 <?php
-
-
- use App\pengguna;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/public', function () {
-    return " nama : yudi kurniawan";
-});
-//Route::get('/pengguna','penggunacontroller@awal');
-//Route::get('/pengguna/tambah',function(){
-	//$pengguna=new pengguna();
- 	//$pengguna->username='yudi kurniawan';
- 	//$pengguna->password='april19';
- 	//$pengguna->save();
- 	//return "data dengan username {$pengguna->username} telah di simpan";
-//});
-
+Route::get('/login','sesicontroller@form');
+Route::post('/login','sesicontroller@validasi');
+Route::get('/logout','sesicontroller@logout');
+Route::get('/','sesicontroller@index');
+Route::group(['Middleware'=>'AuthentifikasiUser'],function()
+{
 Route::get('pengguna','penggunacontroller@awal');
-Route::get('/pengguna/tambah','penggunacontroller@tambah');
-Route::get('pengguna/lihat/{pengguna}','penggunacontroller@lihat');
-Route::post('/pengguna/simpan','penggunacontroller@simpan');
-Route::get('/pengguna/edit/{pengguna}','penggunacontroller@edit');
-Route::post('/pengguna/edit/{pengguna}','penggunacontroller@update');
-Route::get('/pengguna/hapus/{pengguna}','penggunacontroller@hapus');
+Route::get('pengguna/tambah','penggunacontroller@tambah');
+Route::get('pengguna/{pengguna}','penggunacontroller@lihat');
+Route::post('pengguna/simpan','penggunacontroller@simpan');
+Route::get('pengguna/edit/{pengguna}','penggunacontroller@edit');
+Route::post('pengguna/edit/{pengguna}','penggunacontroller@update');
+Route::get('pengguna/hapus/{pengguna}','penggunacontroller@hapus');
 
 Route::get('matakuliah','matakuliahcontroller@awal');
 Route::get('/matakuliah/tambah','matakuliahcontroller@tambah');
@@ -42,20 +29,8 @@ Route::get('/ruangan/edit/{ruangan}','ruangancontroller@edit');
 Route::post('/ruangan/edit/{ruangan}','ruangancontroller@update');
 Route::get('/ruangan/hapus/{ruangan}','ruangancontroller@hapus');
 
-Route::get('/dosen','dosencontroller@awal');
-Route::get('/dosen/tambah','dosencontroller@tambah');
-Route::get('/mahasiswa','mahasiswacontroller@awal');
-Route::get('/mahasiswa/tambah','mahasiswacontroller@tambah');
-Route::get('/matakuliah','matakuliahcontroller@awal');
-Route::get('/matakuliah/tambah','matakuliahcontroller@tambah');
-Route::get('/ruangan','ruangancontroller@awal');
-Route::get('/ruangan/tambah','ruangancontroller@tambah');
-Route::get('/dosen_matakuliah','dosen_matakuliahcontroller@awal');
-Route::get('/dosen_matakuliah/tambah','dosen_matakuliahcontroller@tambah');
-Route::get('/jadwal','jadwal_matakuliahcontroller@awal');
-Route::get('/jadwal/tambah','jadwal_matakuliahcontroller@tambah');
-
 Route::get('mahasiswa','mahasiswacontroller@awal');
+Route::get('/mahasiswa/tambah','mahasiswacontroller@tambah');
 Route::get('mahasiswa/lihat/{mahasiswa}','mahasiswacontroller@lihat');
 Route::post('/mahasiswa/simpan','mahasiswacontroller@simpan');
 Route::get('/mahasiswa/edit/{mahasiswa}','mahasiswacontroller@edit');
@@ -83,3 +58,78 @@ Route::post('/jadwal_matakuliah/simpan','jadwal_matakuliahcontroller@simpan');
 Route::get('/jadwal_matakuliah/edit/{jadwal_matakuliah}','jadwal_matakuliahcontroller@edit');
 Route::post('/jadwal_matakuliah/edit/{jadwal_matakuliah}','jadwal_matakuliahcontroller@update');
 Route::get('/jadwal_matakuliah/hapus/{jadwal_matakuliah}','jadwal_matakuliahcontroller@hapus');
+});
+
+ use App\pengguna;
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/public', function () {
+//     return " nama : yudi kurniawan";
+// });
+//Route::get('/pengguna','penggunacontroller@awal');
+//Route::get('/pengguna/tambah',function(){
+	//$pengguna=new pengguna();
+ 	//$pengguna->username='yudi kurniawan';
+ 	//$pengguna->password='april19';
+ 	//$pengguna->save();
+ 	//return "data dengan username {$pengguna->username} telah di simpan";
+//});
+
+
+
+/*Route::get('/dosen','dosencontroller@awal');
+Route::get('/dosen/tambah','dosencontroller@tambah');
+Route::get('/mahasiswa','mahasiswacontroller@awal');
+Route::get('/mahasiswa/tambah','mahasiswacontroller@tambah');
+Route::get('/matakuliah','matakuliahcontroller@awal');
+Route::get('/matakuliah/tambah','matakuliahcontroller@tambah');
+Route::get('/ruangan','ruangancontroller@awal');
+Route::get('/ruangan/tambah','ruangancontroller@tambah');
+Route::get('/dosen_matakuliah','dosen_matakuliahcontroller@awal');
+Route::get('/dosen_matakuliah/tambah','dosen_matakuliahcontroller@tambah');
+Route::get('/jadwal','jadwal_matakuliahcontroller@awal');
+Route::get('/jadwal/tambah','jadwal_matakuliahcontroller@tambah');*/
+
+
+
+Route::get('ujihas','relationshipreborncontroller@ujihas');
+Route::get('ujidoesnthave','relationshipreborncontroller@ujidoesnthave');
+
+// Route::get('/',function(){
+// 	return\App\dosen_matakuliah::whereHas('dosen',function($query){
+// 		$query->where('nama','like','%s%');
+// 	})->with('dosen')->groupBy('dosen_id')->get();
+// });
+
+// Route::get('/',function(){
+// 	return\App\dosen_matakuliah::whereHas('dosen',function($query){
+// 		$query->where('nama','like','%s%');
+// 	})->orWhereHas('matakuliah',function($query){
+// 		$query->where('title','like','%a%');
+// 	})
+// 	->with('dosen','matakuliah')
+// 	->groupBy('dosen_id')
+// 	->get();
+// });
+
+// Route::get('/',function(Illuminate\Http\Request $request)
+// {
+// 	echo"ini adalah request dari method get".$request->nama;
+// });
+
+// use Illuminate\Http\Request;
+// Route::get('/',function()
+// {
+// 	echo Form::open(['url'=>'/']).
+// 	Form::label('nama').
+// 	Form::text('nama',null).
+// 	Form::submit('kirim').
+// 	Form::close();
+// });
+// Route::post('/',function(Request $request)
+// {
+// 	echo"Hasil dari input tadi nama: ".$request->nama;
+// });
+

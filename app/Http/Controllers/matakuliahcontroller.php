@@ -19,6 +19,10 @@ class matakuliahcontroller extends Controller
  } //
 public function simpan(request $input)
  {
+ 	$this->validate($input,[
+    'title'=>'required',
+    'keterangan'=>'required',
+    ]);
  	$matakuliah=new matakuliah();
  	$matakuliah->title=$input->title;
  	$matakuliah->keterangan=$input->keterangan;

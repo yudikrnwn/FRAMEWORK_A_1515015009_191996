@@ -8,7 +8,7 @@
 		@include('pengguna.form')
 		<div style="width: 100%;text-align:right;">
 			<button class="btn btn-primary"><i class="fa fa-save"></i>simpan</button>
-			<button class="btn btn-danger"><i class="fa fa-undo"></i>simpan</button>
+			<button class="btn btn-danger"><i class="fa fa-undo"></i>ulangi</button>
 		</div>
 		{!! form::close() !!}
 	</div>
